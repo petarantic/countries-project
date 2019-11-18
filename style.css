@@ -1,0 +1,29 @@
+ul > li {
+color: black;
+text-align: center;
+border-radius: 7px;
+padding: 7px;
+border: 2px solid black;
+margin-bottom: 8px;
+}
+
+.list {
+  width: 50%;
+  text-align: center;
+  margin-left: 25%;
+}
+
+.box {
+ text-align: center;
+ margin-top: 10px;
+}
+
+ul > li:hover {
+  background-color: lightgrey;
+  cursor: pointer; 
+}
+
+#countriesSearch {
+  background-color: lightgrey;
+}
+
