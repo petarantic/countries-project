@@ -1,0 +1,22 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "no",
+  "main": "main.js",
+  "scripts": {
+    "test": "no"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petarantic/countries-project.git"
+  },
+  "keywords": [
+    "abc"
+  ],
+  "author": "Petar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/petarantic/countries-project/issues"
+  },
+  "homepage": "https://github.com/petarantic/countries-project#readme"
+}
