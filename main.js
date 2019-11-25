@@ -1,9 +1,9 @@
 fetch("https://restcountries-v1.p.rapidapi.com/all", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "restcountries-v1.p.rapidapi.com",
-		"x-rapidapi-key": "c5ce38b518msh74369a3a3425dc6p1b7f01jsn246f0fd6c1bb"
-	}
+  "method": "GET",
+  "headers": {
+    "x-rapidapi-host": "restcountries-v1.p.rapidapi.com",
+    "x-rapidapi-key": "c5ce38b518msh74369a3a3425dc6p1b7f01jsn246f0fd6c1bb"
+  }
 })
 .then(response => response.json())
 .then(response => {
@@ -28,10 +28,10 @@ fetch("https://restcountries-v1.p.rapidapi.com/all", {
   filter = input.value.toUpperCase();
   ul = document.getElementById("listOfCountries");
   li = ul.getElementsByTagName('li');
-
+   
   for (i = 0; i < li.length; i++) {
     a = li[i];
-    txtValue = a.textContent || a.innerText;
+    txtValue = a.innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       li[i].style.display = "";
     } else {
@@ -42,7 +42,8 @@ fetch("https://restcountries-v1.p.rapidapi.com/all", {
 
  })
 .catch(err => {
-	console.log(err);
+  console.log(err);
 });
+
 
     
