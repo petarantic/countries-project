@@ -26,7 +26,6 @@ fetch("https://restcountries-v1.p.rapidapi.com/all", {
     var input, filter, ul, li, a, i, txtValue;
   input = document.getElementById('countriesSearch');
   filter = input.value.toUpperCase();
-  ul = document.getElementById("listOfCountries");
   li = ul.getElementsByTagName('li');
    
   for (i = 0; i < li.length; i++) {
@@ -40,10 +39,23 @@ fetch("https://restcountries-v1.p.rapidapi.com/all", {
   }
 }
 
+ ul.onclick = function() {
+
+  for (let i=0; i < countryNames.length; i++) {
+
+    console.log(response[i].name + " "
+            + response[i].capital + " " 
+            + response[i].population);
+  }
+ }
+
+
+
  })
+
+
 .catch(err => {
   console.log(err);
 });
 
 
-    
