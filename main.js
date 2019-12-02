@@ -18,7 +18,17 @@ fetch("https://restcountries-v1.p.rapidapi.com/all", {
     let li = document.createElement('li');
     li.innerHTML = countryNames[i];
     ul.appendChild(li); 
+    clickFunction(li, i)
     };
+
+
+
+ function clickFunction(li, i) {
+    li.onclick = function() {
+      alert(response[i].name + " "
+            + response[i].capital + " " + response[i].population);
+    }
+ };
 
  document.getElementById("countriesSearch").addEventListener("input", myFunction);
 
@@ -38,24 +48,11 @@ fetch("https://restcountries-v1.p.rapidapi.com/all", {
     }
   }
 }
-
- ul.onclick = function() {
-
-  for (let i=0; i < countryNames.length; i++) {
-
-    console.log(response[i].name + " "
-            + response[i].capital + " " 
-            + response[i].population);
-  }
- }
-
-
-
- })
+})
 
 
 .catch(err => {
-  console.log(err);
+  console.log("err");
 });
 
 
