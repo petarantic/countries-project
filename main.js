@@ -18,17 +18,30 @@ fetch("https://restcountries-v1.p.rapidapi.com/all", {
     let li = document.createElement('li');
     li.innerHTML = countryNames[i];
     ul.appendChild(li); 
-    clickFunction(li, i)
+    clickFunction(li, i);
     };
 
 
 
- function clickFunction(li, i) {
-    li.onclick = function() {
-      alert(response[i].name + " "
-            + response[i].capital + " " + response[i].population);
+function clickFunction(li, i) { 
+      li.onclick = function() {
+      $(".box").addClass("hide");
+      $(".box2").removeClass("hide"); 
+      var capital = "Capital: " + response[i].capital;
+      var nativeName = "Native name: " + response[i].name;
+      var population = "Population: " + response[i].population;
+      $("#capital").html(capital);
+      $("#nativeName").html(nativeName);
+      $("#population").html(population);
+     
     }
- };
+}
+
+
+$("#back").click(function back(){
+    $(".box").removeClass("hide");
+    $(".box2").addClass("hide");
+});
 
  document.getElementById("countriesSearch").addEventListener("input", myFunction);
 
@@ -36,6 +49,7 @@ fetch("https://restcountries-v1.p.rapidapi.com/all", {
     var input, filter, ul, li, a, i, txtValue;
   input = document.getElementById('countriesSearch');
   filter = input.value.toUpperCase();
+  ul = document.getElementById("listOfCountries");
   li = ul.getElementsByTagName('li');
    
   for (i = 0; i < li.length; i++) {
@@ -47,7 +61,7 @@ fetch("https://restcountries-v1.p.rapidapi.com/all", {
       li[i].style.display = "none";
     }
   }
-}
+};
 })
 
 
