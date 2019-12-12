@@ -33,7 +33,8 @@ function clickFunction(li, i) {
       $("#capital").html(capital);
       $("#nativeName").html(nativeName);
       $("#population").html(population);
-     
+      var urlbeg="https://www.google.com/maps/embed/v1/place?key=AIzaSyAMUhZJImC93BePVKuTu17GN1En2mXhxS0&q=";
+      $('#map').attr( "src",urlbeg+response[i].name);
     }
 }
 
