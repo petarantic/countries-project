@@ -28,16 +28,34 @@ function clickFunction(li, i) {
       $(".box").addClass("hide");
       $(".box2").removeClass("hide"); 
       var capital = "Capital: " + response[i].capital;
-      var nativeName = "Native name: " + response[i].name;
       var population = "Population: " + response[i].population;
       $("#capital").html(capital);
-      $("#nativeName").html(nativeName);
       $("#population").html(population);
       var urlbeg="https://www.google.com/maps/embed/v1/place?key=AIzaSyAMUhZJImC93BePVKuTu17GN1En2mXhxS0&q=";
       $('#map').attr( "src",urlbeg+response[i].name);
+      var fetchURL = 'https://restcountries-v1.p.rapidapi.com/name/'+response[i].name;
+      getQuote(fetchURL);
     }
 }
+  
 
+function getQuote(fetchURL) {
+  fetch(fetchURL, {
+  "method": "GET",
+  "headers": {
+    "x-rapidapi-host": "restcountries-v1.p.rapidapi.com",
+    "x-rapidapi-key": "c5ce38b518msh74369a3a3425dc6p1b7f01jsn246f0fd6c1bb"
+  }
+})
+.then(response => response.json())
+.then(response => {
+  var nativeName = "Native name: " + response[0].nativeName;
+  $("#nativeName").html(nativeName);
+})
+.catch(err => {
+  console.log(err);
+});
+};
 
 $("#back").click(function back(){
     $(".box").removeClass("hide");
