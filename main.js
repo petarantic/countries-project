@@ -51,6 +51,9 @@ function getQuote(fetchURL) {
 .then(response => {
   var nativeName = "Native name: " + response[0].nativeName;
   $("#nativeName").html(nativeName);
+  const result = countryNames.find( ({ name }) => name === 'United States' );
+  var USAnname = "Native name: " + response[1].nativeName;
+  $("#nativeName").html(USAnname);
 })
 .catch(err => {
   console.log(err);
