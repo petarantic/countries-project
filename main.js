@@ -49,13 +49,12 @@ function getQuote(fetchURL) {
 })
 .then(response => response.json())
 .then(response => {
-  var nativeName = "Native name: " + response[0].nativeName;
-  $("#nativeName").html(nativeName);
-  function findUSA(element) { 
-    return element.name === 'United States';
-  };
-  var usaObject = response.find(findUSA);
-  var USAnname = "Native name: " + usaObject.nativeName;
+  var natName = "Native name: " + response[0].nativeName;
+  $("#nativeName").html(natName);
+  var found = response.find(function(obj, index){ 
+    return index > 0
+   });
+  var USAnname = "Native name: " + found.nativeName ;
   $("#nativeName").html(USAnname);
 })
 .catch(err => {           
