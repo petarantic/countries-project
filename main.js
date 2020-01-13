@@ -19,47 +19,47 @@ fetch("https://restcountries-v1.p.rapidapi.com/all", {
     li.innerHTML = countryNames[i];
     ul.appendChild(li); 
     clickFunction(li, i);
-    };
+  };
 
 
 
 function clickFunction(li, i) { 
-      li.onclick = function() {
-      $(".box").addClass("hide");
-      $(".box2").removeClass("hide"); 
-      var capital = "Capital: " + response[i].capital;
-      var population = "Population: " + response[i].population;
-      $("#capital").html(capital);
-      $("#population").html(population);
-      var urlbeg="https://www.google.com/maps/embed/v1/place?key=AIzaSyAMUhZJImC93BePVKuTu17GN1En2mXhxS0&q=";
-      $('#map').attr( "src",urlbeg+response[i].name);
-      var fetchURL = 'https://restcountries-v1.p.rapidapi.com/name/'+response[i].name;
-      getQuote(fetchURL);
-    }
+  li.onclick = function() {
+    $(".box").addClass("hide");
+    $(".box2").removeClass("hide"); 
+    var fetchURL = 'https://restcountries-v1.p.rapidapi.com/name/';
+    getQuote(fetchURL, response[i].name);
+  }
 }
   
 
-function getQuote(fetchURL) {
-  fetch(fetchURL, {
-  "method": "GET",
-  "headers": {
-    "x-rapidapi-host": "restcountries-v1.p.rapidapi.com",
-    "x-rapidapi-key": "c5ce38b518msh74369a3a3425dc6p1b7f01jsn246f0fd6c1bb"
-  }
-})
-.then(response => response.json())
-.then(response => {
-  var natName = "Native name: " + response[0].nativeName;
-  $("#nativeName").html(natName);
-  var found = response.find(function(obj, index){ 
-    return index > 0
-   });
-  var USAnname = "Native name: " + found.nativeName ;
-  $("#nativeName").html(USAnname);
-})
-.catch(err => {           
-  console.log("error");
-});
+function getQuote(fetchURL, name) {
+  fetch(fetchURL + name, {
+    "method": "GET",
+    "headers": {
+      "x-rapidapi-host": "restcountries-v1.p.rapidapi.com",
+      "x-rapidapi-key": "c5ce38b518msh74369a3a3425dc6p1b7f01jsn246f0fd6c1bb"
+    }
+  })
+  .then(response => response.json())
+  .then(response => {
+    var found = response.find(function(country, index){ 
+      return country.name === name;
+    });
+    
+    var capital = "Capital: " + found.capital;
+    var population = "Population: " + found.population;
+    var urlbeg="https://www.google.com/maps/embed/v1/place?key=AIzaSyAMUhZJImC93BePVKuTu17GN1En2mXhxS0&q=";
+    var natName = "Native name: " + found.nativeName;
+  
+    $("#capital").html(capital);
+    $("#population").html(population);
+    $('#map').attr("src", urlbeg + found.name);
+    $("#nativeName").html(natName);
+  })
+  .catch(err => {           
+    console.log("error");
+  });
 };
 
 $("#back").click(function back(){
