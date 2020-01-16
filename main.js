@@ -73,7 +73,7 @@ fetch('https://restcountries-v1.p.rapidapi.com/all', {
      
     for (i = 0; i < li.length; i++) {
       a = li[i];
-      const = a.innerText;
+      let = a.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
         li[i].style.display = '';
       } else {
