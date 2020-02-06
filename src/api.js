@@ -1,4 +1,8 @@
+import request from './config/request';
+
 const { baseUrl, headers } = request;
+
+const countriesList =  document.getElementById('listOfCountries');
 
 function getCountry(fetchURL, name) {
   fetch(fetchURL + name, {
@@ -33,7 +37,7 @@ function chooseCountry(country) {
   getCountry(fetchURL, country);
 }
 
-function fetchCountries() {
+export function fetchCountries() {
 	fetch(`${baseUrl}all`, {
   	'method': 'GET',
   	headers
@@ -57,5 +61,3 @@ function fetchCountries() {
     console.log('err');
   });
 }
-
-fetchCountries();
